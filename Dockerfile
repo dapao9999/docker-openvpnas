@@ -2,15 +2,12 @@ FROM ubuntu:16.04
 
 MAINTAINER Scott Coulton "https://github.com/scotty-c/docker-openvpn"
 
-USER root
-
-WORKDIR / 
+ENV VERSION=2.5
 
 RUN apt-get update && apt-get install -y wget iptables net-tools  && \
-    wget https://swupdate.openvpn.org/as/openvpn-as-2.1.12-Ubuntu16.amd_64.deb && \ 
-    dpkg -i openvpn-as-2.1.12-Ubuntu16.amd_64.deb && \
-    echo "openvpn:password1234" | chpasswd && \
-    rm -rf openvpn-as-2.1.12-Ubuntu16.amd_64.deb
+    wget http://swupdate.openvpn.org/as/openvpn-as-$VERSION-Ubuntu16.amd_64.deb && \ 
+    dpkg -i openvpn-as*.deb && \
+    echo "openvpn:passw0rd" | chpasswd 
 
 COPY build/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
