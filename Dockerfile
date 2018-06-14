@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Scott Coulton "https://github.com/scotty-c/docker-openvpn"
 
-ENV VERSION=2.5
+ENV VERSION=2.5.2
 
 RUN apt-get update && apt-get install -y wget iptables net-tools  && \
     wget http://swupdate.openvpn.org/as/openvpn-as-$VERSION-Ubuntu16.amd_64.deb && \ 
